@@ -1,0 +1,66 @@
+###########################################
+#########      AWS Platform     ###########
+###########################################
+
+region = "eu-central-1"
+aws_access_key = "<put AWS Access key here>"
+aws_secret_key = "<put AWS Secret key here>"
+aws_keypair_public_key_location = "ssh_keypair/waterstream-key.pub"
+aws_keypair_private_key_location = "ssh_keypair/waterstream-key"
+
+###########################################
+#############    Waterstream   ############
+###########################################
+
+# AWS Marketplace repository
+#waterstream_image_name = "709825985650.dkr.ecr.us-east-1.amazonaws.com/waterstream/waterstream-kafka"
+#waterstream_version = "1.3.16"
+# DockerHub repository
+waterstream_image_name = "simplematter/waterstream-kafka"
+waterstream_version = "1.3.22"
+waterstream_enable_ssl = "false"
+# Valid values for waterstream_task_cpu are: 256, 512, 1024, 2048, 4096
+waterstream_task_cpu = 1024
+waterstream_task_memory = 2048
+waterstream_ram_percentage=80
+waterstream_instances = 2
+waterstream_cloudwatch_metrics_enabled = false
+waterstream_prometheus_metrics_enabled = true
+
+#Specify the license file for the BYOL:
+waterstream_license_file = "waterstream.license"
+#To rely on AWS Marketplace license check leave license file empty:
+#waterstream_license_file = ""
+
+###########################################
+#############       Kafka      ############
+###########################################
+
+kafka_bootstrap_servers = "<put bootstrap servers from Confluent Cloud Kafka cluster>"
+
+ccloud_api_key = "<put CCloud api key here>"
+ccloud_api_secret = "<pub CCloud api secret here>"
+
+###########################################
+#############  AuthN & AuthZ   ############
+###########################################
+
+waterstream_require_authentication = "false"
+
+#JWT config
+waterstream_authentication_method_jwt_enabled = "true"
+waterstream_jwt_mqtt_connect_username = "JWT"
+waterstream_jwt_audience = "WS"
+waterstream_jwt_verification_key_file = "local_scripts/jwt/jwt_public.pem"
+waterstream_jwt_verification_key_algorithm = "RSA"
+
+#waterstream_authorization_rules_file = "waterstream_authorization.csv"
+
+###########################################
+######    (Optional) Advanced Setup   #####
+###########################################
+## The values below are set as default in .tf files
+
+#kafka_messages_topics_patterns=""
+#kafka_messages_topics_prefixes=""
+#kafka_mqtt_topic_to_messages_key=""

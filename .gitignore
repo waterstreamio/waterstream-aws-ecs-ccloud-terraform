@@ -1,0 +1,10 @@
+.terraform
+*.tfstate
+*.tfstate.backup
+*.tfvars
+.terraform.lock.hcl
+aws_credentials
+*.lock.info
+*.log
+*.license
+waterstream_authorization_local.csv
