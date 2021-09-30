@@ -184,7 +184,7 @@ SSH into the testbox:
 
      ssh -i ssh_keypair/waterstream-key ec2-user@<waterstream_testbox>
 
-Testbox has Kafka and MQTT clients (mosquitto-client). You can use it to teest client connection.
+Testbox has Kafka and MQTT clients (mosquitto-client). You can use it to test the client connection.
 
 Listen to the messages on all MQTT topics, use QoS 0 for subscription:
 
@@ -203,11 +203,11 @@ Choose one of the "RS.." algorithms, put public key from `local_scripts/jwt/jwt_
 
 Having thus configured the environment variables you can listen to the messages:
 
-    mosquitto_sub -h $WATERSTREAM_LB -p 1883 -t "#" -i mosquitto_l_p1 -q 0 -v -u JWT -P $JWT_TOKEN
+    mosquitto_sub -h $WATERSTREAM_LB_HOSTNAME -p 1883 -t "#" -i mosquitto_l_p1 -q 0 -v -u JWT -P $JWT_TOKEN
 
 and publish the messages:
 
-    mosquitto_pub -h $WATERSTREAM_LB -p 1883 -t "sample_topic" -i mosquitto_l_p2 -q 0 -u JWT -P $JWT_TOKEN -m "Hello, world" 
+    mosquitto_pub -h $WATERSTREAM_LB_HOSTNAME -p 1883 -t "sample_topic" -i mosquitto_l_p2 -q 0 -u JWT -P $JWT_TOKEN -m "Hello, world" 
     
 ## Monitoring 
 
